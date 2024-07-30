@@ -110,7 +110,7 @@ class FacebookClass:
             # we need to use actions so we can write the description of the video
             actions = ActionChains(driver)
             actions.send_keys(
-                f"{day} {i+1} #viral #daiy #fyp #InstaGood #ReelOfTheDay #InstaDaily #LikeForLike #FollowMe"
+                f"{day} {i+1} " + info["Description"]
             ).perform()  # description of the video
             driver.sleep(2)
 
@@ -139,11 +139,17 @@ class FacebookClass:
             actions.send_keys(f"{formatted_date}").send_keys(Keys.ENTER).perform()
             driver.sleep(2)
 
-            # identifies the elements for the Hour, Minute and Time of day (08:00 PM) and send keys
+            # identifies the elements for the Hour, Minute and Time of day (08:00 PM)
             option_elements = driver.find_elements(By.CSS_SELECTOR, "input.x972fbf")
-            option_elements[1].send_keys("10")  # hours
-            option_elements[2].send_keys("00")  # minutes
-            option_elements[3].send_keys("AM")  # time of day
+
+            # takes the Time from the script and divides it in hours, minutes, time_of_day
+            time_parts = info["Time"].replace(":", " ").split()
+            hours, minutes, time_of_day = time_parts
+
+            # send keys
+            option_elements[1].send_keys(hours)  # hours
+            option_elements[2].send_keys(minutes)  # minutes
+            option_elements[3].send_keys(time_of_day)  # time_of_day
             driver.sleep(2)
 
             # clicks on the "Publish" button
