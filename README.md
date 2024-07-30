@@ -39,7 +39,9 @@ Create a text file named `Script.txt` on your Desktop in the following format (o
 Email: your_email@example.com
 Password: your_password
 Name_of_video: Name of your video
+Description: Description of video
 Start_date: MM/DD/YYYY (format of your starting date)
+Time: HH:MM AM/PM (formate of Time)
 Last_day_uploaded: Integer (last uploaded day)
 Upload_until_day: Integer (day to stop uploading)
 ```
